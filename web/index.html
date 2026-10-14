@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISIT 300 Todo List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">ISIT 300 · Week 6</p>
+      <h1>Taskboard</h1>
+      <p class="lede">Add work items, then finish the lab by persisting them with LocalStorage.</p>
+    </header>
+
+    <main>
+      <section class="panel form-panel" aria-labelledby="form-heading">
+        <h2 id="form-heading">New task</h2>
+        <form id="todo-form" novalidate>
+          <div class="field">
+            <label for="todo-title">Title <span class="req">required</span></label>
+            <input
+              id="todo-title"
+              name="title"
+              type="text"
+              required
+              minlength="1"
+              maxlength="120"
+              placeholder="e.g. Finish LinkedIn section 6"
+              autocomplete="off"
+            >
+            <p class="hint">Required. Watch the field turn valid when you type.</p>
+          </div>
+
+          <div class="field">
+            <label for="todo-notes">Notes</label>
+            <textarea
+              id="todo-notes"
+              name="notes"
+              rows="3"
+              maxlength="400"
+              placeholder="Optional details"
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="todo-due">Due date</label>
+            <input id="todo-due" name="dueDate" type="date">
+            <p class="hint">Class 2 will store and show this date on each item.</p>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn primary">Add task</button>
+            <button type="reset" class="btn ghost">Clear form</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel list-panel" aria-labelledby="list-heading">
+        <div class="list-header">
+          <h2 id="list-heading">Your tasks</h2>
+          <div class="list-controls">
+            <button id="sort-toggle" type="button" class="btn ghost">Due date: Ascending</button>
+            <p id="todo-count" class="count" aria-live="polite">0 items</p>
+          </div>
+        </div>
+        <p id="empty-state" class="empty">Nothing here yet. Submit the form to add your first task.</p>
+        <ul id="todo-list" class="todo-list"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Serve with <code>docker compose up -d</code> · Open <a href="http://localhost:8080">http://localhost:8080</a></p>
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
